@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>SAEPVision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="user-mini" id="profileButton" disabled>
+      <span class="avatar" id="avatar">S</span><span id="userLabel">Visitante</span>
+    </button>
+    <a class="brand" href="/">SAEP<span>Vision</span></a>
+    <div class="top-actions">
+      <button class="btn btn-dark" id="loginButton">Login</button>
+      <button class="btn btn-outline" id="registerButton">Criar conta</button>
+    </div>
+  </header>
+
+<section class="galeria-section">
+    <div class="galeria-cabecalho">
+        <h2>Explore nossa galeria</h2>
+        <p>Descubra fotografias compartilhadas pela nossa comunidade.</p>
+    </div>
+
+    <div id="galeria" class="galeria-grid"></div>
+</section>
+
+<script src="/js/galeria.js"></script>
+
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">COMUNIDADE DE FOTOGRAFIA</p>
+      <h1>Histórias em cada <span>imagem.</span></h1>
+      <p class="subtitle">Explore fotografias, descubra talentos e compartilhe seu olhar com o mundo.</p>
+    </section>
+
+    <section class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Digite o nome do fotógrafo... ex.: @fotografo1" autocomplete="off">
+        <div id="searchResults" class="search-results hidden"></div>
+      </div>
+      <button class="btn btn-dark hidden" id="newPostButton">＋ Publicar foto</button>
+    </section>
+
+    <section id="searchNotice" class="notice hidden"></section>
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+    <section id="emptyState" class="empty hidden">
+      <div class="empty-icon">▧</div><h2>Nenhuma fotografia por aqui</h2>
+      <p>Entre como fotógrafo e publique a primeira imagem da comunidade.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>SAEPVision</span>
+    <div class="socials"><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="TikTok">♪</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="YouTube">▶</a></div>
+    <span>Copyright 2026-2027</span>
+  </footer>
+
+  <aside id="profilePanel" class="side-panel hidden">
+    <button class="close-panel" id="closeProfile">×</button>
+    <div id="profileContent"></div>
+  </aside>
+  <div id="overlay" class="overlay hidden"></div>
+
+  <div class="modal-backdrop hidden" id="authModal">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeAuth" aria-label="Fechar">×</button>
+      <p class="eyebrow">BEM-VINDO À COMUNIDADE</p>
+      <h2 id="modalTitle">Login</h2>
+      <form id="loginForm">
+        <label>E-mail<input type="email" id="loginEmail" placeholder="Digite seu e-mail" required></label>
+        <label>Senha<input type="password" id="loginPassword" placeholder="Digite sua senha" required></label>
+        <p class="form-error" id="loginError"></p>
+        <button class="btn btn-dark full" type="submit">Login</button>
+      </form>
+      <form id="registerForm" class="hidden">
+        <label>Nome completo<input id="registerName" placeholder="Digite seu nome" required maxlength="120"></label>
+        <label>Nome de usuário<input id="registerUser" placeholder="ex.: fotografo1" required maxlength="40"></label>
+        <label>E-mail<input type="email" id="registerEmail" placeholder="Digite seu e-mail" required></label>
+        <label>Senha<input type="password" id="registerPassword" placeholder="Mínimo de 6 caracteres" required minlength="6"></label>
+        <label>Tipo de conta
+          <select id="registerType" required><option value="comum">Usuário comum</option><option value="fotografo">Fotógrafo</option></select>
+        </label>
+        <p class="form-error" id="registerError"></p>
+        <button class="btn btn-dark full" type="submit">Criar conta</button>
+      </form>
+      <p class="switch-auth" id="switchAuth">Ainda não tem conta? <button type="button" id="goRegister">Cadastre-se</button></p>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="postModal">
+    <section class="modal">
+      <button class="modal-close" id="closePost">×</button>
+      <p class="eyebrow">COMPARTILHE SEU OLHAR</p><h2>Nova fotografia</h2>
+      <form id="postForm">
+        <label>Título da imagem<input id="postTitle" placeholder="Ex.: Dedo de Deus" required maxlength="160"></label>
+        <label>Fonte de origem / Local onde foi tirada<input id="postLocation" placeholder="Ex.: Rio de Janeiro" required maxlength="160"></label>
+        <label class="upload-box">Imagem
+          <input type="file" id="postImage" accept=".jpg,.jpeg,.png,.gif,.webp" required>
+          <small>JPG, JPEG, PNG, GIF ou WEBP · até 8 MB</small>
+        </label>
+        <p class="form-error" id="postError"></p>
+        <button class="btn btn-dark full" type="submit">Cadastrar fotografia</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
